@@ -1,0 +1,138 @@
+%
+% Alternate Outer Theme based on an idea by the Intitute of Telematics
+%
+% Declaration of Options, definition of specific commands the the design elements,
+% such as headline, footline and frametitle
+%
+% Also alternates the tuklplain to ITMplain style for the title page
+%
+% Published under Beeware-License:
+%
+% Ronny Bergmann <bergmann@math.uni-luebeck.de> wrote this file. As long as you retain this notice you
+% can do whatever you want with this stuff. If we meet some day, and you think 
+% this stuff is worth it, you can buy me a beer or coffee in return.
+%
+\ProvidesPackage{beamerouterthemeTUKL}[2013/09/05 v0.9 beamer theme in the corporate design of the University of Kaiserslautern]
+\makeatletter
+%
+\newlength{\footlineheight}
+\setlength{\footlineheight}{0.022\paperheight}
+\defbeamertemplate*{footline}{TUKL}
+{%
+	\leavevmode%
+	\centering
+	\hbox{%
+	\begin{beamercolorbox}[wd=.07\paperwidth,ht=\footlineheight,dp=0.3\footlineheight,right]{author in head/foot}%
+		\resizebox{!}{1.4\footlineheight}{%
+		\begin{tikzpicture}%
+			% Sqrt[ Sin[(17)/360*2 \[Pi]]^2 + 1] // N
+			\draw[draw=none, fill=tuklred] (0,0) ++(73:1.04186cm) -- ++(-.24cm,0) -- ++(253:1.04186cm) -- ++(.24cm,0);%
+			\draw[fill=tukldeptbg, draw=none] (0,0) -- (73:1.04186cm) -- ++ (0.2,0) -- ++ (0,-1) -- cycle;%
+		\end{tikzpicture}%
+		}%
+	\vspace{-0.4\footlineheight}
+	\hspace{-.007\paperwidth}
+	\end{beamercolorbox}\hspace{-1.4pt}
+	\begin{beamercolorbox}[wd=.25\paperwidth,ht=\footlineheight,dp=0.3\footlineheight,center]{palette departement}%
+		\usebeamerfont{author in head/foot}\insertshortauthor%
+		\end{beamercolorbox}\hspace{-1pt}%Hacked up to now
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=\footlineheight,dp=0.3\footlineheight,center]{palette departement}%
+			\usebeamerfont{title in head/foot}\insertshorttitle
+		\end{beamercolorbox}\hspace{-1pt}%Hacked up to now
+		\begin{beamercolorbox}[wd=.3\paperwidth,ht=\footlineheight,dp=0.3\footlineheight,right]{palette departement}%
+			\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+			\insertframenumber{}%
+			\iftukl@displayTotalFramenumber%
+				/ \inserttotalframenumber%
+ 			\fi%
+ 			\hspace*{6ex}%
+ 		\end{beamercolorbox}
+ 	}%
+}
+ 
+\defbeamertemplate*{headline}{TUKL} 
+{ 
+	\leavevmode
+	\centering
+	\hbox{
+	\begin{beamercolorbox}[wd=.2\paperwidth, ht=.075\paperheight,vmode,left,sep=0pt,dp=1ex]{author in head/foot}
+		\hspace{.3cm}{}\includegraphics[width=.175\paperwidth]{logos/TU-KL-RGB.jpg}
+	\end{beamercolorbox}
+	\begin{beamercolorbox}[wd=.133333\paperwidth, ht=.075\paperheight,vmode,right,sep=0pt]{author in head/foot}
+		\resizebox{!}{.075\paperheight}{
+		\begin{tikzpicture}
+			% Sqrt[ Sin[(17)/360*2 \[Pi]]^2 + 1] // N
+			\draw[draw=none, fill=tuklred] (0,0) ++(73:.5*1.04186cm) -- ++(73:.5*1.04186cm) -- ++(-.18cm,0) -- ++(253:.5*1.04186cm) -- ++(.18cm,0);
+			\draw[fill=tukldeptbg, draw=none] (0,0) -- (73:1.04186cm) -- ++ (0.2,0) -- ++ (0,-1) -- cycle;%
+		\end{tikzpicture}
+		}
+	\end{beamercolorbox}
+	\hspace{-0.015\paperwidth}
+ 	\begin{beamercolorbox}[leftskip=0pt,rightskip=0pt,wd=.666666\paperwidth, ht=.075\paperheight,vmode,left,sep=0pt]{palette departement}
+ 		\iftukl@displayNavigation%
+			\ifnum\c@framenumber=1%
+			\ %
+			\else%
+ 				\insertnavigation{.63\paperwidth}%
+			\fi%
+%			~\\
+%			\usebeamerfont{date in head/foot}\insertsubsection
+			\vspace{.01\paperheight}
+ 		\fi
+ 		\vspace{-\baselineskip}
+ 		\makebox[.64\paperwidth][r]{\strut\theDept}
+		\vspace{.25\baselineskip}
+ 	\end{beamercolorbox}
+	}
+	\strut
+	\par
+	\vskip.5\baselineskip
+	\hspace{.02\paperwidth}
+} 
+%
+% Plain Style for the titlepage
+%
+\defbeamertemplate{footline}{TUKLplain}{}
+\defbeamertemplate{headline}{TUKLplain} 
+{ 
+	\leavevmode%
+	\hspace{.3cm}{}\includegraphics[width=.175\paperwidth]{logos/TU-KL-RGB.jpg}
+	\strut
+	\par
+}
+%
+% Title page stuff
+%
+\defbeamertemplate*{frametitle}{TUKL}
+{
+ 	\nointerlineskip%
+ 	\begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,vmode]{frametitle}
+% 		\vskip.5ex%
+ 		\par{\usebeamerfont*{frametitle}\insertframetitle\strut\par}%
+ 		\ifx\insertframesubtitle\@empty%
+ 			\strut\par%
+ 		\else
+ 			\vskip.25ex%
+ 			\par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
+ 		\fi%%
+ 		\vskip.5ex%
+ 	\end{beamercolorbox}%
+ 	\nointerlineskip%
+}
+\setbeamersize{text margin left=2em,text margin right=2em}
+ 
+\renewcommand{\maketitle}[0]
+{%
+ 	\setbeamertemplate{headline}[TUKL]%
+ 	\setbeamertemplate{footline}[TUKLplain]%
+ 	\ifbeamer@inframe%
+ 		\vspace{1.3ex}%
+ 		\titlepage%
+ 	\else%
+ 		\frame[t]{\titlepage}%
+ 	\fi%
+   	\setbeamertemplate{headline}[TUKL]%
+ 	\setbeamertemplate{footline}[TUKL]%
+}
+\mode<all> 
+\makeatother

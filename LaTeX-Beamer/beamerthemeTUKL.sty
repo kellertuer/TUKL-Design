@@ -1,0 +1,91 @@
+%
+% Main Theme File
+%
+% Declaration of Options, definition of specific commands the the design elements,
+% such as headline, footline and frametitle
+%
+% Published under Beeware-License:
+%
+% Ronny Bergmann <bergmann@math.uni-luebeck.de> wrote this file. As long as you retain this notice you
+% can do whatever you want with this stuff. If we meet some day, and you think 
+% this stuff is worth it, you can buy me a beer or coffee in return.
+
+\ProvidesPackage{beamerthemeTUKL}[2013/09/05 v0.91 beamer theme in the corporate design of the University of Kaiserslautern]
+\RequirePackage{ifthen}
+\RequirePackage{calc}
+%
+%
+% Global Color Definitions
+%
+\definecolor{tuklblue}{RGB}{14,49,146}
+\definecolor{tuklred}{RGB}{254,0,9}
+\definecolor{tuklmath}{RGB}{254,192,0}
+%
+% for later - tukldept
+%\definecolor{tukldeptbg}{named}{tuklmath}
+%\definecolor{tukldeptfg}{named}{black}
+\definecolor{tukldeptbg}{named}{tuklblue}
+\definecolor{tukldeptfg}{named}{white}
+
+%
+\mode<presentation>
+%
+%  Option: Choose a theme
+%
+
+\newif\iftukl@useMeta%
+%
+\DeclareOptionBeamer{meta}[false]{\csname tukl@useMeta#1\endcsname}
+\ExecuteOptionsBeamer{meta=true}
+% alternate commands
+\DeclareOptionBeamer{usemeta}{\tukl@useMetatrue}
+\DeclareOptionBeamer{nometa}{\tukl@useMetafalse}
+
+%
+%  Option: Display Total Frame Number in Footline (only inf visible) on_/off
+%
+\newif\iftukl@displayTotalFramenumber%
+%
+\DeclareOptionBeamer{frametotal}[true]{\csname tukl@displayTotalFrameNumber#1\endcsname}
+\ExecuteOptionsBeamer{frametotal}
+% alternate
+\DeclareOptionBeamer{displayframetotal}{\tukl@displayTotalFrameNumbertrue}
+\DeclareOptionBeamer{hideframetotal}{\tukl@displayTotalFrameNumberfalse}
+
+%
+%  Option: Display Total Frame Number in Footline (only inf visible) on_/off
+%
+\newif\iftukl@displayNavigation%
+%
+\DeclareOptionBeamer{navigation}[true]{\csname tukl@displayNavigation#1\endcsname}
+\ExecuteOptionsBeamer{navigation}
+\DeclareOptionBeamer{hidenavigation}{\tukl@displayNavigationfalse}
+\DeclareOptionBeamer{displaynavigation}{\tukl@displayNavigationtrue}
+
+\newcommand{\theDept}{}
+\newcommand{\theSecondLogo}{}
+\ProcessOptionsBeamer
+
+% After Processing Options the variable is correct so load Myriad (Standard)
+\iftukl@useMeta
+\RequirePackage[no-math]{fontspec} 
+\RequirePackage{xltxtra}
+\defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (``quotes'' --- dashes etc.) to unicode
+\setsansfont[Ligatures={Common}]{Meta}
+\fi
+
+%
+% Load Theme depending on Option theme
+%
+\useinnertheme{TUKL}%
+\useoutertheme{TUKL}%
+\usecolortheme{TUKL}%
+%
+% Rest to some standard values
+%
+\setbeamertemplate{blocks}[rounded]
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{sections/subsections in toc}[ball]
+
+\mode<all>
+\makeatletter
