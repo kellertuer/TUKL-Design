@@ -6,7 +6,7 @@ Ein Theme, das für die Farben aller Fachbereiche durch Optionen verfügbar ist.
 
 ## Lizenz
 
-	Die Quelltext-Dateien liegen unter folgender Lizenz
+Die Quelltext-Dateien liegen unter folgender Lizenz
 	
 	% THE BEER-WARE LICENSE (Rev. 42):
 	% Ronny Bergmann <bergmann@mathematik.uni-kl.de> wrote this file. As long as
