@@ -1,0 +1,138 @@
+%
+% THE BEER-WARE LICENSE (Rev. 42):
+% Ronny Bergmann <bergmann@mathematik.uni-kl.de> wrote this file. As long as
+% you retain this notice you can do whatever you want with this stuff. If we
+% meet some day, and you think this stuff is worth it, you can buy me a beer
+% or coffee in return.
+%
+% This file is just to get started - You need the corresponding Logo
+%
+\documentclass[german,10pt,xcolor=colortbl,compress
+%,draft
+]{beamer}
+\usepackage{xunicode}
+\usepackage[OT1]{fontenc}
+\usepackage{calc}
+\usepackage[ngerman]{babel} % Neue Rechtschreibung
+\usepackage{amsmath,amsthm,amssymb,euscript} % AMS-LaTeX  
+\usepackage{enumerate,graphicx,tikz,booktabs}
+\usepackage[TeX]{listings}
+\lstset{basicstyle=\small\ttfamily}
+\RequirePackage[no-math]{fontspec} 
+\RequirePackage{xltxtra}
+\defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (``quotes'' --- dashes etc.) to unicode
+% Load Them
+\usetheme[meta=false,navigation=true]{TUKL}
+% Meta alternative in XeLaTeX
+\setsansfont[Ligatures={Common}]{Arial}
+%
+\setbeamertemplate{navigation symbols}{}
+\title{\LaTeX-Beamer Theme im Stil der TU Kaiserslautern}
+\subtitle{Verwendung und Optionen dieses Themes}
+\date[]{\today}
+\author[R. Bergmann]{Ronny Bergmann}
+\institute[]{AG Bildverarbeitung\\FB Mathematik\\TU Kaiserslautern}
+\hypersetup{colorlinks=true, linkcolor=tuklblue, urlcolor=blue!50!black}
+
+\renewcommand{\theSecondLogo}{\includegraphics[width=.15\paperwidth]{logos/Logo_FKZM_rgb.jpg}}
+
+\begin{document}
+	\maketitle
+	\begin{frame}{Inhaltsverzeichnis}
+		\tableofcontents
+	\end{frame}
+	\section{Einrichten}
+	\begin{frame}{Einbinden des Themes}
+		\begin{itemize}
+			\item die 4 Dateien
+			\begin{itemize}
+				\item \lstinline|beamercolorthemeTUKL.sty|
+				\item \lstinline|beamerinnerthemeTUKL.sty|
+				\item \lstinline!beameroutertheme.sty!
+				\item \lstinline|beamerthemeTUKL.sty| 
+			\end{itemize}
+			\item das TU-Logo als \lstinline!TU-KL-RGB.jpg! in den Ordner \lstinline!logos/! legen
+			 im gleichen Verzeichnis oder im \TeX-Tree lagern
+			\item nach den Paketen mit \textbackslash\lstinline|usetheme[<Optionen>]\{TUKL\}| das Paket laden
+			\item Am einfachsten: Mit einem der Beispiele (pdflatex oder \XeLaTeX) loslegen
+		\end{itemize}
+	\end{frame}
+	\section{Optionen}
+	\subsection*{}
+	\begin{frame}{Optionen}{Fachbereichsfarben mit den RGB-Farben aus dem Coorporate Design}
+				\begin{tabular}{ll}
+					\toprule
+					\lstinline|FB=none| (Standardwert)& Standardfarben der TU (wie hier)\\
+					\lstinline|FB=Architektur| & \colorbox{tuklarchitektur}{\color{white}Architektur}\\
+					\lstinline|FB=Maschinenbau| & \colorbox{tuklmaschinenbau}{\color{white}Maschinenbau und Verfahrenstechnik}\\
+					\lstinline|FB=Bauignenieurwesen| & \colorbox{tuklbauingenieurwesen}{\color{white}Bauingenieurwesen}\\
+					\lstinline|FB=Mathematik| & \colorbox{tuklmathematik}{\color{black}Mathematik}\\
+					\lstinline|FB=Biologie| & \colorbox{tuklbiologie}{\color{white}Biologie}\\
+					\lstinline|FB=Physik| & \colorbox{tuklphysik}{\color{white}Physik}\\
+					\lstinline|FB=Chemie| & \colorbox{tuklchemie}{\color{white}Chemie}\\
+					\lstinline|FB=Raumplanung| & \colorbox{tuklraumplanung}{\color{white}Raum- und Umweltplanung}\\
+					\lstinline|FB=Elektrotechnik| & \colorbox{tuklelektrotechnik}{\color{white}Elektrotechnik und Informationstechnik}\\
+					\lstinline|FB=Sozialwissenschaften| & \colorbox{tuklsozialwissenschaften}{\color{white}Sozialwissenschaften}\\
+					\lstinline|FB=Informatik| & \colorbox{tuklinformatik}{\color{white}Informatik}\\
+					\lstinline|FB=Wirtschaftswissenschaften| & \colorbox{tuklwirtschaftswissenschaften}{\color{white}Wirtschaftswissenschaften}\\
+					\bottomrule
+				\end{tabular}
+	\end{frame}
+	\begin{frame}{Schriftart}{nur XeLaTeX}
+		\begin{itemize}
+			\item \lstinline|meta=true| oder \lstinline|usemeta| lädt mit dem Paket \lstinline|fontspec| die Schriftart Meta, so diese im System geladen ist
+			\item Alternativ: Zeilen im \XeLaTeX-Beispiel laden die Schriftart Arial
+			\item Achtung: \lstinline|fontspec| ist ein \XeLaTeX-Paket
+			\item \lstinline|meta=true| oder \lstinline|nometa| lädt weder das Paket \lstinline|fontspec| noch eine Schriftart.
+			\item Standardwert: \lstinline|meta=false| (funktioniert standardmäßig also auch mit pdf\LaTeX)
+		\end{itemize}
+	\end{frame}
+	\begin{frame}{Gesamtfolienanzahl und Navigation}
+		\begin{itemize}
+			\item \lstinline|frametotal=true| bzw. \lstinline|displayframetotal| Zeige hinter der Foliennummer in der Fußzeile die Gesamtfolienanzahl. Beispiel: 5/\inserttotalframenumber
+			\item \lstinline|frametotal=false| bzw. \lstinline|hideframetotal| Zeige die Gesamtanzahl nicht (wie in diesem Foliensatz)
+			\item Standardwert: \lstinline|frametotal=true|
+		\end{itemize}
+		\vspace{\baselineskip}
+		\begin{itemize}
+			\item \lstinline|navigation=true| bzw. \lstinline|displaynavigation| Zeige in der Kopfzeile eine Navigation an (wie in diesm Foliensatz)
+			\item \lstinline|navigation=false| bzw. \lstinline|hidenavigation| Zeige keine Navigation an
+			\item Standardwert: \lstinline|navigation=true|
+		\end{itemize}
+	\end{frame}
+	\begin{frame}[plain]{Leere Folien}
+		Wird einmal mehr Platz benötigt, kann mit der option \lstinline|[plain]| des \lstinline|frame| eine komplett leere Folie erzeugt werden, wie diese hier.
+	\end{frame}
+	\section{Befehle}
+	\subsection*{}
+	\begin{frame}[fragile]{Titelseite}
+		Der Befehl \lstinline|\maketitle| erzeugt eine Titelfolie.
+		
+		Er kann entweder in einem \lstinline|frame| aufgerufen werden, dann wird der Stil des Frames verwendet.
+		
+		Außerhalb eines Frames wird ein Titelframe erzeugt, der den Standardkopf hat, aber keine Fußzeile (siehe Titelfolie dieser Folien).
+	\end{frame}
+	\begin{frame}[fragile]{Ein zweites Logo auf der Titelseite}
+		Der Befehl \lstinline|\theSecondLogo| setzt ein neues Logo, indem man diese umdefiniert.
+		
+		Dabei wird in dem Befehl die gesamte Grafik eingebunden; in diesen Folien etwa das Logo des Felix-Klein-Zentrums mittels
+		
+		\begin{lstlisting}
+\renewcommand{\theSecondLogo}%
+	{\includegraphics[width=.15\paperwidth]{logos/Logo_FKZM.jpg}}
+		\end{lstlisting}		
+	\end{frame}
+	\begin{frame}[fragile]{Der Fachbereichsschiftzug im Kopf}
+		Der Befehl \lstinline|\theDept| wird mit der Fachbereichs-Option \lstinline|FB=| auf den Namen des Fachbereichs gesetzt.
+		\\[\baselineskip]
+		Mit \lstinline|\renewcommand{\theDept}{}| kann der Text auf leer zurückgesetzt werden.
+	\end{frame}
+	\begin{frame}{Links}
+		\begin{itemize}
+			\item Downloadbereich der Presse-Abteilung\\ \href{http://www.uni-kl.de/universitaet/pr-marketing/download-und-vorlagen/}{www.uni-kl.de/universitaet/pr-marketing/download-und-vorlagen/}
+			\item Userguide zu \LaTeX-Beamer \href{ftp://ftp.dante.de/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{dante.de/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}
+			\item Aktuellste Version dieses Paketes auf \href{http://github.com}{github.com}:\\
+			\href{https://github.com/kellertuer/TUKL-Design/archive/master.zip}{https://github.com/kellertuer/TUKL-Design/archive/master.zip}
+		\end{itemize}
+	\end{frame}
+\end{document}
