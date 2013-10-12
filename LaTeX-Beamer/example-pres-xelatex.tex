@@ -19,27 +19,31 @@
 \RequirePackage[no-math]{fontspec} 
 \RequirePackage{xltxtra}
 \defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (``quotes'' --- dashes etc.) to unicode
+% Load Theme
+\usetheme[meta=false,navigation=true]{TUKL}
+% Meta alternative in XeLaTeX: Arial
 \setsansfont[Ligatures={Common}]{Arial}
-% Load Them
-\usetheme[nometa,navigation=true]{TUKL}
 %
 \setbeamertemplate{navigation symbols}{}
 \title{Beispielpräsentation}
-\subtitle{Eines Vortrages im neuen Design mit \LaTeX}
-\date[]{5. Februar 2011\\[1ex] Workshop on Corporate Design Stuff}
-\author[R. Bergmann]{Ronny Bergmann}
-\institute[]{AG Bildverarbeitung\\FB Mathematik\\TU Kaiserslautern}
+\subtitle{Untertitel}
+\date[]{\today\\[1ex] WorkShop/Conference}
+\author[Autor in Fußzeile]{Autor: Name, Vorname}
+\institute[]{AG xy\\FB ab\\TU Kaiserslautern}
 
 \renewcommand{\theSecondLogo}{\includegraphics[width=.15\paperwidth]{logos/Logo_FKZM_rgb.jpg}}
 
 \begin{document}
 	\maketitle	
 	\section{Einleitung}
-	\begin{frame}{}
+	\begin{frame}{Inhalt}
 		\tableofcontents
 	\end{frame}
-	\subsection{A}
-	\begin{frame}{Einleitung - Motivation}
+	\begin{frame}{Es geht los}
+		Hier: Farben in den TU-Farben
+	\end{frame}
+	\section{Erstes Thema}
+	\begin{frame}{Ein erstes Thema}{Ein Untertitel}
 	ABCx
 	\begin{lemma}[Ein Beispiellemma]
 		Ist das hier und es gilt.
@@ -58,11 +62,5 @@
 	\end{frame}
 	\begin{frame}[plain]{}{}%Ohne Titel und Untertitel damits ganz leer und weiß ist
 		Ich bin so ein leerer Frame
-	\end{frame}
-	
-	\begin{frame}{TODO}
-		\begin{itemize}
-			\item Literatur?
-		\end{itemize}
 	\end{frame}
 \end{document}
