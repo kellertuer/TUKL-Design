@@ -15,7 +15,7 @@
 \usepackage{calc}
 \usepackage[ngerman]{babel} % Neue Rechtschreibung
 \usepackage{amsmath,amsthm,amssymb,euscript} % AMS-LaTeX  
-\usepackage{enumerate,graphicx,tikz,booktabs}
+\usepackage{enumerate,graphicx,booktabs}
 \usepackage[TeX]{listings}
 \lstset{basicstyle=\small\ttfamily}
 \RequirePackage[no-math]{fontspec} 
@@ -42,6 +42,20 @@
 		\tableofcontents
 	\end{frame}
 	\section{Einrichten}
+	\begin{frame}[fragile]{Benötigte Pakete}
+		folgende Pakete werden von dem Theme benötigt und per \lstinline!\RequirePackage! eingebunden:
+		\begin{itemize}
+			\item \lstinline!ifthen!
+			\item \lstinline!pdftexcmds!
+			\item \lstinline!calc!
+			\item \lstinline!TikZ!
+		\end{itemize}\vspace{\baselineskip}
+		sowie bei XeLaTeX zusätzlich
+		\begin{itemize}
+			\item \lstinline!fontspec!
+		\end{itemize}\vspace{\baselineskip}
+		Bei der Option \lstinline!meta=true! muss außerdem die Schriftart Meta im System installiert sein.
+	\end{frame}
 	\begin{frame}{Einbinden des Themes}
 		\begin{itemize}
 			\item die 4 Dateien
