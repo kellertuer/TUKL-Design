@@ -14,7 +14,7 @@
 %
 \ProvidesPackage{beamerthemeTUKL}[2013/09/05 v0.91 beamer theme in the corporate design of the University of Kaiserslautern]
 \RequirePackage{ifthen,pdftexcmds}
-\RequirePackage{calc}
+\RequirePackage{calc,tikz}
 \makeatletter
 %
 %
@@ -179,7 +179,6 @@
 % After Processing Options the variable is correct so load Myriad (Standard)
 \iftukl@useMeta
 \RequirePackage[no-math]{fontspec} 
-\RequirePackage{xltxtra}
 \defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (``quotes'' --- dashes etc.) to unicode
 \setsansfont[Ligatures={Common}]{Meta}
 \fi
