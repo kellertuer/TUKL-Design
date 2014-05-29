@@ -22,7 +22,8 @@
 \RequirePackage{xltxtra}
 \defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (``quotes'' --- dashes etc.) to unicode
 % Load Them
-\usetheme[meta=false,navigation=true]{TUKL}
+\usetheme[meta=false,navigation=true,reducedframetotal%,
+]{TUKL}
 % Meta alternative in XeLaTeX
 \setsansfont[Ligatures={Common}]{Arial}
 %
@@ -106,6 +107,8 @@
 			\item \lstinline|frametotal=true| bzw. \lstinline|displayframetotal| Zeige hinter der Foliennummer in der Fußzeile die Gesamtfolienanzahl. Beispiel: 5/\inserttotalframenumber
 			\item \lstinline|frametotal=false| bzw. \lstinline|hideframetotal| Zeige die Gesamtanzahl nicht (wie in diesem Foliensatz)
 			\item Standardwert: \lstinline|frametotal=true|
+			\item analog: \lstinline|displayframetotal| und \lstinline|hideframetotel|
+			\item zusätzlich: \lstinline|reducedframetotal| - Effekt: siehe diese Folien.
 		\end{itemize}
 		\vspace{\baselineskip}
 		\begin{itemize}
