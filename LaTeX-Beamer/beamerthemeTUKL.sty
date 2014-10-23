@@ -12,7 +12,7 @@
 % meet some day, and you think this stuff is worth it, you can buy me a beer
 % or coffee in return.
 %
-\ProvidesPackage{beamerthemeTUKL}[2013/09/05 v0.91 beamer theme in the corporate design of the University of Kaiserslautern]
+\ProvidesPackage{beamerthemeTUKL}[2014/10/23 v0.91 beamer theme in the corporate design of the University of Kaiserslautern]
 \RequirePackage{ifthen,pdftexcmds}
 \RequirePackage{calc,tikz}
 \makeatletter
@@ -151,6 +151,10 @@
 % alternate commands
 \DeclareOptionBeamer{usemeta}{\tukl@useMetatrue}
 \DeclareOptionBeamer{nometa}{\tukl@useMetafalse}
+%
+\newif\iftukl@DisableExternalize%
+\DeclareOptionBeamer{DisableExternalize}[false]{\csname tukl@DisableExternalize#1\endcsname}
+\ExecuteOptionsBeamer{DisableExternalize=false}
 
 %
 %  Option: Display Total Frame Number in Footline (only inf visible) on_/off

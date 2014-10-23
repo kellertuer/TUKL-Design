@@ -12,7 +12,7 @@
 % meet some day, and you think this stuff is worth it, you can buy me a beer
 % or coffee in return.
 %
-\ProvidesPackage{beamerouterthemeTUKL}[2013/09/05 v0.9 beamer theme in the corporate design of the University of Kaiserslautern]
+\ProvidesPackage{beamerouterthemeTUKL}[2013/10/23 v0.92 beamer theme in the corporate design of the University of Kaiserslautern]
 \makeatletter
 %
 \newlength{\footlineheight}
@@ -24,6 +24,7 @@
 	\hbox{%
 	\begin{beamercolorbox}[wd=.07\paperwidth,ht=\footlineheight,dp=0.4\footlineheight,right]{author in head/foot}%
 		\resizebox{!}{1.4\footlineheight}{%
+		\iftukl@DisableExternalize ABCD\fi%
 		\begin{tikzpicture}%
 			% Sqrt[ Sin[(17)/360*2 \[Pi]]^2 + 1] // N
 			\draw[draw=none, fill=tuklred] (0,0) ++(73:1.04186cm) -- ++(-.24cm,0) -- ++(253:1.04186cm) -- ++(.24cm,0);%
@@ -71,8 +72,9 @@
 		\hspace{.3cm}{}\includegraphics[width=.175\paperwidth]{logos/TU-KL-RGB.jpg}
 	\end{beamercolorbox}
 	\begin{beamercolorbox}[wd=.133333\paperwidth, ht=.075\paperheight,vmode,right,sep=0pt]{author in head/foot}
-		\resizebox{!}{.075\paperheight}{
-		\begin{tikzpicture}
+		\resizebox{!}{.075\paperheight}{%
+		\iftukl@DisableExternalize ABCD\fi%
+		\begin{tikzpicture}%
 			% Sqrt[ Sin[(17)/360*2 \[Pi]]^2 + 1] // N
 			\draw[draw=none, fill=tuklred] (0,0) ++(73:.5*1.04186cm) -- ++(73:.5*1.04186cm) -- ++(-.18cm,0) -- ++(253:.5*1.04186cm) -- ++(.18cm,0);
 			\draw[fill=tukldeptbg, draw=none] (0,0) -- (73:1.04186cm) -- ++ (0.2,0) -- ++ (0,-1) -- cycle;%
@@ -108,6 +110,7 @@
 \defbeamertemplate{headline}{TUKLplain} 
 { 
 	\leavevmode%
+	\iftukl@DisableExternalize ABCD\fi%
 	\hspace{.3cm}{}\includegraphics[width=.175\paperwidth]{logos/TU-KL-RGB.jpg}
 	\strut
 	\par
@@ -117,21 +120,20 @@
 %
 \defbeamertemplate*{frametitle}{TUKL}
 {
- 	\nointerlineskip%
- 	\begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,vmode]{frametitle}
-% 		\vskip.5ex%
- 		\par{\usebeamerfont*{frametitle}\insertframetitle\strut\par}%
- 		\ifx\insertframesubtitle\@empty%
- 			\strut\par%
+	\nointerlineskip%
+	\begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,vmode]{frametitle}
+		\par{\usebeamerfont*{frametitle}\insertframetitle\strut\par}%
+		\ifx\insertframesubtitle\@empty%
+			\strut\par%
 			\vspace{-2\baselineskip}
- 		\else
- 			\vskip.25ex%
- 			\par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
+		\else
+			\vskip.25ex%
+\par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
 	 		\vskip-.5ex%
- 		\fi%%
- 		\vskip.5ex%
- 	\end{beamercolorbox}%
- 	\nointerlineskip%
+		\fi%
+		\vskip.5ex%
+	\end{beamercolorbox}%
+	\nointerlineskip%
 }
 \setbeamersize{text margin left=2em,text margin right=2em}
  
