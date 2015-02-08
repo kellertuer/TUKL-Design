@@ -5,7 +5,7 @@ TeX-Dokumente im Corporate Design der TU Kaiserslautern
 Ein Theme, das für die Farben aller Fachbereiche durch Optionen verfügbar ist. Alle Optionen finden sich in den Folien `optionen.pdf` im Ordner `LaTeX-Beamer`.
 
 ### Verwendung
-Dieses Repository ist auf http://www.uni-kl.de/universitaet/pr-marketing/download-und-vorlagen/latex-vorlagen/ verfügbar. Die aktuellste Version erhält man über den Button „Download ZIP“ in der rechten Spalte.
+Dieses Repository ist auf http://www.uni-kl.de/universitaet/pr-marketing/corporate-design-und-vorlagen/ verfügbar. Die aktuellste Version erhält man über den Button „Download ZIP“ in der rechten Spalte.
 
 ## Lizenz
 

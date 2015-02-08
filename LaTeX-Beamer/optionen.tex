@@ -22,18 +22,16 @@
 \RequirePackage{xltxtra}
 \defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (``quotes'' --- dashes etc.) to unicode
 % Load Them
-\usetheme[meta=false,navigation=true,reducedframetotal%,
+\usetheme[useptsans,navigation=true,reducedframetotal,FB=Mathematik
 ]{TUKL}
 % Meta alternative in XeLaTeX
-\setsansfont[Ligatures={Common}]{Arial}
-%
 \setbeamertemplate{navigation symbols}{}
 \title{\LaTeX-Beamer Theme im Stil der TU Kaiserslautern}
 \subtitle{Verwendung und Optionen dieses Themes}
 \date[]{\today}
 \author[R. Bergmann]{Ronny Bergmann}
 \institute[]{AG Bildverarbeitung\\FB Mathematik\\TU Kaiserslautern}
-\hypersetup{colorlinks=true, linkcolor=tuklblue, urlcolor=blue!50!black}
+%\hypersetup{colorlinks=true, linkcolor=tuklblue, urlcolor=blue!50!black}
 
 \renewcommand{\theSecondLogo}{\includegraphics[width=.15\paperwidth]{logos/Logo_FKZM_rgb.jpg}}
 
@@ -55,7 +53,7 @@
 		\begin{itemize}
 			\item \lstinline!fontspec!
 		\end{itemize}\vspace{\baselineskip}
-		Bei der Option \lstinline!meta=true! muss außerdem die Schriftart Meta im System installiert sein.
+		Bei der Option \lstinline!ptsans=true! muss außerdem die Schriftart PT Sans\footnote{verfügbar unter \href{http://www.paratype.com/public/}{paratype.com/public/}} im System installiert sein. Alternativ kann Calibri verwendet werden.
 	\end{frame}
 	\begin{frame}{Einbinden des Themes}
 		\begin{itemize}
@@ -66,7 +64,7 @@
 				\item \lstinline!beameroutertheme.sty!
 				\item \lstinline|beamerthemeTUKL.sty| 
 			\end{itemize}
-			\item das TU-Logo als \lstinline!TU-KL-RGB.jpg! in den Ordner \lstinline!logos/! legen
+			\item das TU-Logo als \lstinline!TUKL_LOGO_RGB.png! in den Ordner \lstinline!logos/! legen
 			 im gleichen Verzeichnis oder im \TeX-Tree lagern
 			\item nach den Paketen mit \textbackslash\lstinline|usetheme[<Optionen>]\{TUKL\}| das Paket laden
 			\item Am einfachsten: Mit einem der Beispiele (pdflatex oder \XeLaTeX) loslegen
@@ -74,7 +72,12 @@
 	\end{frame}
 	\section{Optionen}
 	\subsection*{}
-	\begin{frame}{Optionen}{Fachbereichsfarben mit den RGB-Farben aus dem Coorporate Design}
+	\begin{frame}{Optionen}{Fachbereichsfarben mit den RGB-Farben aus dem Coorporate Design I}
+		In diesem Design wird der Fachbereichsname oben links gesetzt, so dieser angegeben ist. Die Fachbereichsfarben (siehe nächste Folie) können zum Setzen von Highlichts genutzt werden. Die Farben sind mit \lstinline!tukldeptfg! (Vordergrundfarbe) und \lstinline!tikldeptbg! (Hintergrund-/Hauptfarbe) definiert.
+		
+		Ist kein Fachbereich gesetzt, rückt das Logo auf die linke Seite und die rechte Seite bleibt frei
+	\end{frame}
+	\begin{frame}{Optionen}{Fachbereichsfarben mit den RGB-Farben aus dem Coorporate Design II}
 				\begin{tabular}{ll}
 					\toprule
 					\lstinline|FB=none| (Standardwert)& Standardfarben der TU (wie hier)\\
@@ -93,13 +96,18 @@
 					\bottomrule
 				\end{tabular}
 	\end{frame}
+	\fbsetfalse
+	\begin{frame}{Ein Beispielframe ohne Fachbereich}
+		Dieser Frame ist die Optik, die ohne gesetzten Fachbereich entsteht.
+	\end{frame}
+	\fbsettrue
 	\begin{frame}{Schriftart}{nur XeLaTeX}
 		\begin{itemize}
-			\item \lstinline|meta=true| oder \lstinline|usemeta| lädt mit dem Paket \lstinline|fontspec| die Schriftart Meta, so diese im System geladen ist
-			\item Alternativ: Zeilen im \XeLaTeX-Beispiel laden die Schriftart Arial
+			\item \lstinline|ptsans=true| oder \lstinline|useptsans| lädt mit dem Paket \lstinline|fontspec| die Schriftart PT Sans\footnote{verfügbar unter \href{http://www.paratype.com/public/}{paratype.com/public/}}, so diese im System geladen ist
+			\item Alternativ: Zeilen im \XeLaTeX-Beispiel laden die Schriftart Calibri
 			\item Achtung: \lstinline|fontspec| ist ein \XeLaTeX-Paket
-			\item \lstinline|meta=false| oder \lstinline|nometa| lädt weder das Paket \lstinline|fontspec| noch eine Schriftart.
-			\item Standardwert: \lstinline|meta=false| (funktioniert standardmäßig also auch mit pdf\LaTeX)
+			\item \lstinline|ptsans=false| oder \lstinline|noptsans| lädt weder das Paket \lstinline|fontspec| noch eine Schriftart und ist somit die Einstellung für \lstinline!pdflatex!.
+			\item Standardwert: \lstinline|ptsans=false|
 		\end{itemize}
 	\end{frame}
 	\begin{frame}{Gesamtfolienanzahl und Navigation}
@@ -139,16 +147,19 @@
 	{\includegraphics[width=.15\paperwidth]{logos/Logo_FKZM.jpg}}
 		\end{lstlisting}		
 	\end{frame}
-	\begin{frame}[fragile]{Der Fachbereichsschriftzug im Kopf}
+	\begin{frame}[fragile]{Der Fachbereichsschriftzug}
 		Der Befehl \lstinline|\theDept| wird mit der Fachbereichs-Option \lstinline|FB=| auf den Namen des Fachbereichs gesetzt.
 		\\[\baselineskip]
 		Mit \lstinline|\renewcommand{\theDept}{}| kann der Text auf leer zurückgesetzt werden.
+		mit dem Aufruf \lstinline!\theDept! wird der Name ausgegeben.
 	\end{frame}
 	\begin{frame}{Links}
 		\begin{itemize}
-			\item Downloadbereich der Presse-Abteilung\\ \href{http://www.uni-kl.de/universitaet/pr-marketing/download-und-vorlagen/}{www.uni-kl.de/universitaet/pr-marketing/download-und-vorlagen/}
-			\item Userguide zu \LaTeX-Beamer \href{ftp://ftp.dante.de/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{dante.de/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}
-			\item Aktuellste Version dieses Paketes auf \href{http://github.com}{github.com}:\\
+			\item Downloadbereich der Marketing-Abteilung\\ \href{http://www.uni-kl.de/universitaet/pr-marketing/corporate-design-und-vorlagen/}{http://www.uni-kl.de/universitaet/pr-marketing/corporate-design-und-vorlagen/}
+			\item Die Schriftart PT Sans\\
+				\href{http://www.paratype.com/public/}{http://www.paratype.com/public/}
+			\item Userguide zu \LaTeX-Beamer\\ \href{ftp://ftp.dante.de/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{dante.de/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}
+			\item Aktuellste Version dieses Paketes/Themes auf \href{http://github.com}{github.com}:\\
 			\href{https://github.com/kellertuer/TUKL-Design/archive/master.zip}{https://github.com/kellertuer/TUKL-Design/archive/master.zip}
 		\end{itemize}
 	\end{frame}

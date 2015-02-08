@@ -12,35 +12,30 @@
 % meet some day, and you think this stuff is worth it, you can buy me a beer
 % or coffee in return.
 %
-\ProvidesPackage{beamerouterthemeTUKL}[2013/10/23 v0.92 beamer theme in the corporate design of the University of Kaiserslautern]
+\ProvidesPackage{beamerouterthemeTUKL}[2015/02/05 v0.92 beamer theme in the corporate design of the University of Kaiserslautern]
 \makeatletter
 %
 \newlength{\footlineheight}
-\setlength{\footlineheight}{0.025\paperheight}
+\setlength{\footlineheight}{0.02\paperheight}
 \defbeamertemplate*{footline}{TUKL}
 {%
 	\leavevmode%
 	\centering
 	\hbox{%
-	\begin{beamercolorbox}[wd=.07\paperwidth,ht=\footlineheight,dp=0.4\footlineheight,right]{author in head/foot}%
-		\resizebox{!}{1.4\footlineheight}{%
-		\iftukl@DisableExternalize ABCD\fi%
-		\begin{tikzpicture}%
-			% Sqrt[ Sin[(17)/360*2 \[Pi]]^2 + 1] // N
-			\draw[draw=none, fill=tuklred] (0,0) ++(73:1.04186cm) -- ++(-.24cm,0) -- ++(253:1.04186cm) -- ++(.24cm,0);%
-			\draw[fill=tukldeptbg, draw=none] (0,0) -- (73:1.04186cm) -- ++ (0.2,0) -- ++ (0,-1) -- cycle;%
-		\end{tikzpicture}%
-		}%
-	\vspace{-0.4\footlineheight}
-	\hspace{-.007\paperwidth}
-	\end{beamercolorbox}\hspace{-1.4pt}
-	\begin{beamercolorbox}[wd=.25\paperwidth,ht=\footlineheight,dp=0.4\footlineheight,center]{palette departement}%
+	\begin{beamercolorbox}[colsep=0.25pt,sep=0pt,dp=0pt]{upper separation line foot}
+   \end{beamercolorbox}
+	}
+	\hbox{
+	\begin{beamercolorbox}[wd=.333333\paperwidth,ht=\footlineheight,dp=0.4\footlineheight,left]{palette tertiary}%
+		\hspace{2em}%
 		\usebeamerfont{author in head/foot}\insertshortauthor%
 		\end{beamercolorbox}\hspace{-1pt}%Hacked up to now
-		\begin{beamercolorbox}[wd=.4\paperwidth,ht=\footlineheight,dp=0.4\footlineheight,center]{palette departement}%
+%
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=\footlineheight,dp=0.4\footlineheight,center]{palette tertiary}%
 			\usebeamerfont{title in head/foot}\insertshorttitle
 		\end{beamercolorbox}\hspace{-1pt}%Hacked up to now
-		\begin{beamercolorbox}[wd=.3\paperwidth,ht=\footlineheight,dp=0.4\footlineheight,right]{palette departement}%
+%
+		\begin{beamercolorbox}[wd=.3\paperwidth,ht=\footlineheight,dp=0.4\footlineheight,right]{palette tertiary}%
 			\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
 		\iftukl@reduceTotalFrameNumber%fancy&still useless reduction ;)
 		\pgfmathtruncatemacro{\numerator}{%
@@ -67,40 +62,63 @@
 { 
 	\leavevmode
 	\centering
+	\vspace*{2ex}
+	\hspace*{-2ex}
 	\hbox{
-	\begin{beamercolorbox}[wd=.2\paperwidth, ht=.075\paperheight,vmode,left,sep=0pt,dp=1ex]{author in head/foot}
-		\hspace{.3cm}{}\includegraphics[width=.175\paperwidth]{logos/TU-KL-RGB.jpg}
-	\end{beamercolorbox}
-	\begin{beamercolorbox}[wd=.133333\paperwidth, ht=.075\paperheight,vmode,right,sep=0pt]{author in head/foot}
-		\resizebox{!}{.075\paperheight}{%
-		\iftukl@DisableExternalize ABCD\fi%
-		\begin{tikzpicture}%
-			% Sqrt[ Sin[(17)/360*2 \[Pi]]^2 + 1] // N
-			\draw[draw=none, fill=tuklred] (0,0) ++(73:.5*1.04186cm) -- ++(73:.5*1.04186cm) -- ++(-.18cm,0) -- ++(253:.5*1.04186cm) -- ++(.18cm,0);
-			\draw[fill=tukldeptbg, draw=none] (0,0) -- (73:1.04186cm) -- ++ (0.2,0) -- ++ (0,-1) -- cycle;%
-		\end{tikzpicture}
-		}
-	\end{beamercolorbox}
-	\hspace{-0.015\paperwidth}
- 	\begin{beamercolorbox}[leftskip=0pt,rightskip=0pt,wd=.666666\paperwidth, ht=.075\paperheight,vmode,left,sep=0pt]{palette departement}
- 		\iftukl@displayNavigation%
-			\ifnum\c@framenumber=1%
-			\relax
-			\else%
- 				\insertnavigation{.5\paperwidth}%
+	\iffbset
+	%
+	% Left: Fachbereichs-Box, middle: Navigation, right: Logo
+	% 
+	\begin{beamercolorbox}%
+			[wd=.245\paperwidth, ht=.033784928\paperwidth, center, sep=4pt, dp=1ex, rounded=true]{fachbereich in head/foot}
+			\hfill\vspace*{-.6ex}%Manual Hack to vert center
+			\hspace*{2ex}{\normalsize\expandafter\uppercase\expandafter{\theDept}}
+			\hfill
+		\end{beamercolorbox}
+		\hspace*{1ex}
+	 	\begin{beamercolorbox}[leftskip=0ex,rightskip=0pt,wd=.51\paperwidth, ht=.033784928\paperwidth,vmode,left,sep=0pt]{palette secondary}
+			\vfill%Hack
+			\iftukl@displayNavigation%
+				\ifnum\c@framenumber=1%
+					\relax%
+				\else%
+	 				\insertnavigation{.5\paperwidth}%
+				\fi%
 			\fi%
-%			~\\
-%			\usebeamerfont{date in head/foot}\insertsubsection
-			\vspace{.01\paperheight}
- 		\fi
- 		\vspace{-\baselineskip}
- 		\makebox[.64\paperwidth][r]{\strut\theDept}
-		\vspace{.25\baselineskip}
- 	\end{beamercolorbox}
-	}
+			\vfill
+		\end{beamercolorbox}
+		\begin{beamercolorbox}%
+				[wd=.245\paperwidth, ht=.033784928\paperwidth, center, sep=0pt, dp=1ex, rounded=true]{logo in head/foot}
+				\hfill\vfill{}
+				\hspace*{-1.5ex}\includegraphics[width=.175\paperwidth]{logos/TUKL_LOGO_RGB.png}
+				\hfill\vfill{}
+			\end{beamercolorbox}
+	\else
+	% Left: Logo
+	% middle & right: Navigation if active
+		\begin{beamercolorbox}%
+			[wd=.245\paperwidth, ht=.033784928\paperwidth, center, sep=0pt, dp=1ex, rounded=true]{logo in head/foot}
+			\hfill\vfill{}
+			\hspace*{2ex}\includegraphics[width=.175\paperwidth]{logos/TUKL_LOGO_RGB.png}
+			\hfill\vfill{}
+		\end{beamercolorbox}
+		\hspace*{1ex}
+	 	\begin{beamercolorbox}[leftskip=0pt,rightskip=0pt,wd=.755\paperwidth, ht=.033784928\paperwidth,vmode,left,sep=0pt]{palette secondary}
+			\vfill
+			\iftukl@displayNavigation%
+				\ifnum\c@framenumber=1%
+				\relax
+				\else%
+	 				\insertnavigation{.745\paperwidth}%
+				\fi%
+				\vfill
+	 		\fi
+	 	\end{beamercolorbox}
+	\fi
+	} %end of hbox
 	\strut
 	\par
-	\vskip.5\baselineskip
+	\vskip.125\baselineskip
 	\hspace{.02\paperwidth}
 } 
 %
@@ -110,8 +128,7 @@
 \defbeamertemplate{headline}{TUKLplain} 
 { 
 	\leavevmode%
-	\iftukl@DisableExternalize ABCD\fi%
-	\hspace{.3cm}{}\includegraphics[width=.175\paperwidth]{logos/TU-KL-RGB.jpg}
+	\vspace{.25\baselineskip}
 	\strut
 	\par
 }
@@ -127,9 +144,9 @@
 			\strut\par%
 			\vspace{-2\baselineskip}
 		\else
-			\vskip.25ex%
-\par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
-	 		\vskip-.5ex%
+			\vskip-.25ex%
+		\par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
+			\vskip-.5ex%
 		\fi%
 		\vskip.5ex%
 	\end{beamercolorbox}%

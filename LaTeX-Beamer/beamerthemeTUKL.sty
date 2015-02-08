@@ -12,7 +12,7 @@
 % meet some day, and you think this stuff is worth it, you can buy me a beer
 % or coffee in return.
 %
-\ProvidesPackage{beamerthemeTUKL}[2014/10/23 v0.91 beamer theme in the corporate design of the University of Kaiserslautern]
+\ProvidesPackage{beamerthemeTUKL}[2015/02/05 v0.93 beamer theme in the corporate design of the University of Kaiserslautern]
 \RequirePackage{ifthen,pdftexcmds}
 \RequirePackage{calc,tikz}
 \makeatletter
@@ -20,12 +20,14 @@
 %
 % Global Color Definitions
 %
-\definecolor{tuklblue}{RGB}{14,49,146}
-\definecolor{tuklred}{RGB}{254,0,9}
+\definecolor{tuklblue}{RGB}{0,95,140}
+\definecolor{tuklred}{RGB}{185,40,25}
+\definecolor{tuklcoldgray}{RGB}{130,125,120}
+\definecolor{tuklwarmgray}{RGB}{130,140,150}
 %
 \definecolor{tuklarchitektur}{RGB}{0,0,0}
-\definecolor{tuklmaschinenbau}{RGB}{0,160,198}
 \definecolor{tuklbauingenieurwesen}{RGB}{255,89,0}
+\definecolor{tuklmaschinenbau}{RGB}{0,160,198}
 \definecolor{tuklmathematik}{RGB}{254,192,0}
 \definecolor{tuklbiologie}{RGB}{1,147,119}
 \definecolor{tuklphysik}{RGB}{7,43,97}
@@ -53,12 +55,12 @@
 \fbsetfalse
 \DeclareOptionBeamer{FB}[none]{
 	% Nich schön, aber ein String-Switch Bauen gelang mir nicht
-	\ifnum\pdf@strcmp{#1}{none}=\z@%
-		\definecolor{tukldeptbg}{named}{tuklblue}%
-		\definecolor{tukldeptfg}{named}{white}%
-		\renewcommand{\theDept}{}%
-		\fbsettrue%
-	\fi
+	% \ifnum\pdf@strcmp{#1}{none}=\z@%
+	% 	\definecolor{tukldeptbg}{named}{tuklblue}%
+	% 	\definecolor{tukldeptfg}{named}{white}%
+	% 	\renewcommand{\theDept}{}%
+	% 	\fbsetfalse%
+	% \fi
 	\ifnum\pdf@strcmp{#1}{Architektur}=\z@
 		\definecolor{tukldeptbg}{named}{tuklarchitektur}%
 		\definecolor{tukldeptfg}{named}{white}%
@@ -134,7 +136,6 @@
 	\iffbset%
 		\relax%
 	\else%
-		\PackageWarning{Unknown Departement, fallback to usual blue}%
 		\definecolor{tukldeptbg}{named}{tuklblue}%
 		\definecolor{tukldeptfg}{named}{white}%
 	\fi%
@@ -146,11 +147,11 @@
 %
 \newif\iftukl@useMeta%
 %
-\DeclareOptionBeamer{meta}[false]{\csname tukl@useMeta#1\endcsname}
-\ExecuteOptionsBeamer{meta=false}
+\DeclareOptionBeamer{ptsans}[false]{\csname tukl@useMeta#1\endcsname}
+\ExecuteOptionsBeamer{ptsans=false}
 % alternate commands
-\DeclareOptionBeamer{usemeta}{\tukl@useMetatrue}
-\DeclareOptionBeamer{nometa}{\tukl@useMetafalse}
+\DeclareOptionBeamer{useptsans}{\tukl@useMetatrue}
+\DeclareOptionBeamer{noptsans}{\tukl@useMetafalse}
 %
 \newif\iftukl@DisableExternalize%
 \DeclareOptionBeamer{DisableExternalize}[false]{\csname tukl@DisableExternalize#1\endcsname}
@@ -195,7 +196,7 @@
 \iftukl@useMeta
 \RequirePackage[no-math]{fontspec} 
 \defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (``quotes'' --- dashes etc.) to unicode
-\setsansfont[Ligatures={Common}]{Meta}
+\setsansfont[Ligatures={Common}]{PT Sans}
 \fi
 
 %
@@ -210,6 +211,6 @@
 \setbeamertemplate{blocks}[rounded]
 \setbeamertemplate{items}[square]
 \setbeamertemplate{sections/subsections in toc}[square]
-
+\hypersetup{colorlinks,linkcolor=,urlcolor=tuklblue!80}
 \mode<all>
 \makeatletter
